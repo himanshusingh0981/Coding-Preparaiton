@@ -178,18 +178,20 @@ Explanation : The subarrays having XOR of
 
     	unordered_map<int,int>mp;
         int count=0;
-    	mp.insert({_xor,1});
     	int ans =0;
     	for(int i=0;i<arr.size();i++){
     		ans = ans^arr[i];
             int a = ans^_xor;
+            if(ans==_xor){
+                count++;
+            }
     		if(mp.find(a)!=mp.end()){
     			
                 count+=mp[a];
             }
     		mp[ans]+=1;
     	}
-    	return ans;
+    	return count;
 }
 
 
